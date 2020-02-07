@@ -9,12 +9,12 @@ import {
   Body,
   Param,
 } from '@nestjs/common';
-import GetAllProductsUseCase from 'src/application/getAllProducts.usecase';
-import GetProductUseCase from 'src/application/getProduct.usecase';
-import Product from 'src/domain/product';
-import CreateProductUseCase from 'src/application/createProduct.usecase';
-import DeleteProductUseCase from 'src/application/deleteProduct.usecase';
-import UpdateProductUseCase from 'src/application/updateProduct.usecase';
+import GetAllProductsUseCase from '../../application/getAllProducts.usecase';
+import GetProductUseCase from '../../application/getProduct.usecase';
+import Product from '../../domain/product';
+import CreateProductUseCase from '../../application/createProduct.usecase';
+import DeleteProductUseCase from '../../application/deleteProduct.usecase';
+import UpdateProductUseCase from '../../application/updateProduct.usecase';
 
 @Controller('products/')
 export default class ProductController {
@@ -29,6 +29,7 @@ export default class ProductController {
   @Get()
   public async getProducts(@Res() request): Promise<any> {
     const products = await this.getAllProductsUseCase.handler();
+    console.log(products);
     return request.status(HttpStatus.OK).json(products);
   }
 

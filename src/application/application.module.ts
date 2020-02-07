@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import ProductRepositoryMongo from 'src/infrastructure/adapters/repository/product.repository.mongo';
-import ProductSchema from 'src/infrastructure/adapters/repository/schema/product.schema';
+import ProductRepositoryMongo from '../infrastructure/adapters/repository/product.repository.mongo';
+import ProductSchema from '../infrastructure/adapters/repository/schema/product.schema';
 import GetAllProductsUseCase from './getAllProducts.usecase';
 import DomainModule from '../domain/domain.module';
 import GetProductUseCase from './getProduct.usecase';
