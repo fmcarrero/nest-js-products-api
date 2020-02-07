@@ -22,6 +22,6 @@ jobs:
     - run: npm test
       env:
         CI: true
-    - run: npm run test:e2e"
+    - run: npm run test:e2e
       env:
         CI: true
