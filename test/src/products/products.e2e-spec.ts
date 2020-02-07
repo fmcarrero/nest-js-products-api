@@ -11,7 +11,7 @@ describe('ProductsController (e2e)', () => {
   let app: INestApplication;
   let container;
   const portMongo = 27017;
-
+  jest.setTimeout(30000);
   beforeAll(async done => {
     container = await new GenericContainer('mongo')
       .withExposedPorts(portMongo)
@@ -24,6 +24,7 @@ describe('ProductsController (e2e)', () => {
     container.stop();
     done();
   });
+  
 
   beforeEach(async done => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -49,4 +50,6 @@ describe('ProductsController (e2e)', () => {
     expect(response.body.price).toBe(1000);
     done();
   });
+
+  
 });
