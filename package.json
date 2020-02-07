@@ -17,7 +17,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "DEBUG=testcontainers NODE_ENV=test jest --ci --verbose --forceExit --detectOpenHandles --config ./test/jest-e2e.json"
+    "test:e2e": "DEBUG=testcontainers NODE_ENV=test jest --ci --verbose  --detectOpenHandles --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@nestjs/common": "^6.10.14",
