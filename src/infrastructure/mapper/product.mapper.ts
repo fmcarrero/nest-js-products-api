@@ -10,7 +10,7 @@ export default class ProductMapper {
       new Product(
         productEntity.id,
         productEntity.name,
-        productEntity.desription,
+        productEntity.description,
         productEntity.imageUrl,
         productEntity.price,
         new Date(productEntity.createAt),
