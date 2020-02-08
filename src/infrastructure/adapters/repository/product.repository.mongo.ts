@@ -5,6 +5,7 @@ import Product from 'src/domain/product';
 import { ProductEntity } from 'src/infrastructure/adapters/repository/entity/product.entity';
 import ProductMapper from '../../mapper/product.mapper';
 import { ProductRepository } from '../../../domain/ports/product.repository';
+import { Optional } from 'typescript-optional';
 
 @Injectable()
 export default class ProductRepositoryMongo implements ProductRepository {
@@ -17,18 +18,18 @@ export default class ProductRepositoryMongo implements ProductRepository {
     return ProductMapper.toDomains(products);
   }
 
-  public async createProduct(product: Product): Promise<Product> {
+  public async createProduct(product: Product): Promise<Optional<Product>> {
     let productCreated = new this.productModel(product);
     productCreated = await productCreated.save();
     return ProductMapper.toDomain(productCreated);
   }
 
-  public async getProduct(productId: string): Promise<Product> {
+  public async getProduct(productId: string): Promise<Optional<Product>> {
     const product = await this.productModel.findById(productId);
     return ProductMapper.toDomain(product);
   }
 
-  public async deleteProduct(productId: string): Promise<Product> {
+  public async deleteProduct(productId: string): Promise<Optional<Product>> {
     const productDeleted = await this.productModel.findByIdAndDelete(productId);
     return ProductMapper.toDomain(productDeleted);
   }
@@ -36,7 +37,7 @@ export default class ProductRepositoryMongo implements ProductRepository {
   public async updateProduct(
     productId: string,
     product: Product,
-  ): Promise<Product> {
+  ): Promise<Optional<Product>> {
     const productUpdated = await this.productModel.findByIdAndUpdate(
       productId,
       product,

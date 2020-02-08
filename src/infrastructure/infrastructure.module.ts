@@ -23,11 +23,9 @@ export default class InfrastructureModule {
           useFactory: async (configService: ConfigService) => ({
             uri: `mongodb://${configService.get(db_uri)}:${setting.port ||
               configService.get(db_port)}/${configService.get(db_name)}`,
-              
           }),
           inject: [ConfigService],
         }),
-        //MongooseModule.forRoot('mongodb://localhost:27017/products'),
         MongooseModule.forFeature([{ name: 'Product', schema: ProductSchema }]),
       ],
       controllers: [ProductController],

@@ -4,7 +4,6 @@ import * as request from 'supertest';
 import AppModule from '../../../src/app.module';
 
 import { GenericContainer, Wait } from 'testcontainers';
-import { timer } from 'rxjs';
 const fs = require('fs');
 
 describe('ProductsController (e2e)', () => {
@@ -12,6 +11,7 @@ describe('ProductsController (e2e)', () => {
   let container;
   const portMongo = 27017;
   jest.setTimeout(30000);
+
   beforeAll(async done => {
     container = await new GenericContainer('mongo')
       .withExposedPorts(portMongo)
@@ -24,7 +24,6 @@ describe('ProductsController (e2e)', () => {
     container.stop();
     done();
   });
-  
 
   beforeEach(async done => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
@@ -46,10 +45,8 @@ describe('ProductsController (e2e)', () => {
       .send(JSON.parse(rawdata));
 
     expect(response.status).toBe(201);
-    expect(response.body.id).not.toBeNull()
+    expect(response.body.id).not.toBeNull();
     expect(response.body.price).toBe(1000);
     done();
   });
-
-  
 });

@@ -1,5 +1,5 @@
 export default class Product {
-  private id: string;
+  private id?: string;
 
   private readonly name: string;
 
@@ -29,5 +29,8 @@ export default class Product {
 
   public getName(): string {
     return this.name;
+  }
+  public getId(): string {
+    return this.id;
   }
 }
