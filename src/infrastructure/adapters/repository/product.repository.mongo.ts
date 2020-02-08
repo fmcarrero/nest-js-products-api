@@ -3,9 +3,9 @@ import { Injectable } from '@nestjs/common';
 import { Model } from 'mongoose';
 import Product from 'src/domain/product';
 import { ProductEntity } from 'src/infrastructure/adapters/repository/entity/product.entity';
+import { Optional } from 'typescript-optional';
 import ProductMapper from '../../mapper/product.mapper';
 import { ProductRepository } from '../../../domain/ports/product.repository';
-import { Optional } from 'typescript-optional';
 
 @Injectable()
 export default class ProductRepositoryMongo implements ProductRepository {

@@ -13,7 +13,7 @@
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
     "lint": "eslint '{src,apps,libs,test}/**/*.ts' --fix",
-    "test": "DEBUG=testcontainers jest --ci --verbose  --detectOpenHandles --forceExit",
+    "test": "DEBUG=testcontainers jest --ci --verbose  --detectOpenHandles",
     "test:watch": "DEBUG=testcontainers jest --watch",
     "test:cov": "DEBUG=testcontainers jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",

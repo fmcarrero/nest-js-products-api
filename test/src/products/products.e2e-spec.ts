@@ -1,9 +1,9 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
+import { GenericContainer, Wait } from 'testcontainers';
 import AppModule from '../../../src/app.module';
 
-import { GenericContainer, Wait } from 'testcontainers';
 const fs = require('fs');
 
 describe('ProductsController (e2e)', () => {
@@ -38,7 +38,7 @@ describe('ProductsController (e2e)', () => {
   });
 
   it('/ (Post)', async done => {
-    let rawdata = fs.readFileSync(`${__dirname}/example.json`);
+    const rawdata = fs.readFileSync(`${__dirname}/example.json`);
 
     const response = await request(app.getHttpServer())
       .post('/products/')

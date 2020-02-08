@@ -30,6 +30,7 @@ export default class Product {
   public getName(): string {
     return this.name;
   }
+
   public getId(): string {
     return this.id;
   }

@@ -1,9 +1,9 @@
 import { GenericContainer, Wait } from 'testcontainers';
 import { TestingModule, Test } from '@nestjs/testing';
+import { MongooseModule } from '@nestjs/mongoose';
 import InfrastructureModule from '../../infrastructure.module';
 
 import ProductRepositoryMongo from './product.repository.mongo';
-import { MongooseModule } from '@nestjs/mongoose';
 import ProductSchema from './schema/product.schema';
 import Product from '../../../domain/product';
 
@@ -11,6 +11,7 @@ describe('productRepositoryMongo', () => {
   let productRepositoryMongo: ProductRepositoryMongo;
   let container;
   const mongoPort = 27017;
+  jest.setTimeout(30000);
   beforeAll(async done => {
     container = await new GenericContainer('mongo')
       .withExposedPorts(mongoPort)
