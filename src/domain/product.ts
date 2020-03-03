@@ -1,3 +1,5 @@
+import PriceProductLessZeroException from './exceptions/price-product-less-zero.exception';
+
 export default class Product {
   private id?: string;
 
@@ -9,7 +11,7 @@ export default class Product {
 
   private readonly price: number;
 
-  private readonly createAt: Date;
+  private createAt: Date;
 
   constructor(
     id: string,
@@ -17,14 +19,21 @@ export default class Product {
     description: string,
     imageUrl: string,
     price: number,
-    createAt: Date,
   ) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.imageUrl = imageUrl;
-    this.price = price;
-    this.createAt = createAt;
+    this.price = price || 0;
+    this.validatePrice();
+  }
+
+  public validatePrice(): void {
+    if (this.price <= 0) {
+      throw new PriceProductLessZeroException(
+        'The price product should be greater than zero',
+      );
+    }
   }
 
   public getName(): string {
@@ -33,5 +42,10 @@ export default class Product {
 
   public getId(): string {
     return this.id;
+  }
+
+  public setCreateAt(createdAt: Date): this {
+    this.createAt = createdAt;
+    return this;
   }
 }

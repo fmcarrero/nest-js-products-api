@@ -7,16 +7,16 @@ export default class ProductMapper {
     if (!productEntity) {
       return Optional.empty<Product>();
     }
-    return Optional.of(
-      new Product(
-        productEntity.id,
-        productEntity.name,
-        productEntity.description,
-        productEntity.imageUrl,
-        productEntity.price,
-        new Date(productEntity.createAt),
-      ),
+    const product = new Product(
+      productEntity.id,
+      productEntity.name,
+      productEntity.description,
+      productEntity.imageUrl,
+      productEntity.price,
     );
+
+    product.setCreateAt(new Date(productEntity.createAt));
+    return Optional.of(product);
   }
 
   public static toDomains(productsEntity: ProductEntity[]): Product[] {

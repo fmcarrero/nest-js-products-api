@@ -8,6 +8,7 @@ import GetProductUseCase from './getProduct.usecase';
 import CreateProductUseCase from './createProduct.usecase';
 import DeleteProductUseCase from './deleteProduct.usecase';
 import UpdateProductUseCase from './updateProduct.usecase';
+import ProductFactory from './factory/product.factory';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import UpdateProductUseCase from './updateProduct.usecase';
     ]),
   ],
   providers: [
+    ProductFactory,
     GetAllProductsUseCase,
     GetProductUseCase,
     CreateProductUseCase,
@@ -31,6 +33,7 @@ import UpdateProductUseCase from './updateProduct.usecase';
     },
   ],
   exports: [
+    ProductFactory,
     GetAllProductsUseCase,
     GetProductUseCase,
     CreateProductUseCase,

@@ -1,6 +1,5 @@
 import { Module, DynamicModule } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import DomainModule from 'src/domain/domain.module';
 import ApplicationModule from '../application/application.module';
 import ProductSchema from './adapters/repository/schema/product.schema';
 import ProductController from './controllers/product.controller';

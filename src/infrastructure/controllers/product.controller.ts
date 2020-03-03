@@ -9,6 +9,7 @@ import {
   Body,
   Param,
 } from '@nestjs/common';
+import ProductCommand from '../../application/commands/product.command';
 import GetAllProductsUseCase from '../../application/getAllProducts.usecase';
 import GetProductUseCase from '../../application/getProduct.usecase';
 import Product from '../../domain/product';
@@ -29,7 +30,6 @@ export default class ProductController {
   @Get()
   public async getProducts(@Res() request): Promise<any> {
     const products = await this.getAllProductsUseCase.handler();
-    console.log(products);
     return request.status(HttpStatus.OK).json(products);
   }
 
@@ -45,7 +45,7 @@ export default class ProductController {
   @Post()
   public async createProduct(
     @Res() request,
-    @Body() product: Product,
+    @Body() product: ProductCommand,
   ): Promise<any> {
     const productCreated = await this.createProductUseCase.handler(product);
     return request.status(HttpStatus.CREATED).json(productCreated);

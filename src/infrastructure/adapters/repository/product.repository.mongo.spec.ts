@@ -57,8 +57,8 @@ describe('productRepositoryMongo', () => {
         'prueba',
         'https://upload.wikimedia.org/wikipedia/commons/5/5d/Sony-PSP-1000-Body.png',
         500,
-        new Date(2017, 2, 7),
       );
+      product.setCreateAt(new Date(2017, 2, 7));
       await productRepositoryMongo.createProduct(product);
 
       const products = await productRepositoryMongo.getAll();
@@ -77,11 +77,11 @@ describe('productRepositoryMongo', () => {
         'prueba',
         'https://upload.wikimedia.org/wikipedia/commons/5/5d/Sony-PSP-1000-Body.png',
         500,
-        new Date(2017, 2, 7),
       );
-     const productSaved = await productRepositoryMongo.createProduct(product);
+      product.setCreateAt(new Date(2017, 2, 7));
+      const productSaved = await productRepositoryMongo.createProduct(product);
 
-     const ProductExpect = await productRepositoryMongo.getProduct(
+      const ProductExpect = await productRepositoryMongo.getProduct(
         productSaved.get().getId(),
       );
       expect(ProductExpect.isPresent()).toBeTruthy();
@@ -99,11 +99,10 @@ describe('productRepositoryMongo', () => {
         'prueba de guardado',
         'https://upload.wikimedia.org/wikipedia/commons/5/5d/Sony-PSP-1000-Body.png',
         500,
-        new Date(2017, 2, 7),
       );
-     const productSaved = await productRepositoryMongo.createProduct(product);
-     
-     
+      product.setCreateAt(new Date(2017, 2, 7));
+      const productSaved = await productRepositoryMongo.createProduct(product);
+
       expect(productSaved.isPresent()).toBeTruthy();
       expect(productSaved.get().getId()).not.toBeUndefined();
       expect(productSaved.get().getName()).toBe('macbook pro');
